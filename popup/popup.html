@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/dist/css/popup.css" rel="stylesheet">
+    <title>Chrome Addon v3: popup</title>
+</head>
+
+<body class="p-3">
+
+    <div class="col-md-12 col-lg-8">
+        <h5 class="mb-3">Convert epoch to date</h5>
+            <div class="row mt-3">
+                <div class="col-10">
+                    <input type="text" maxlength="13" class="form-control val-input" id="date-e" placeholder="Epoch Time" required="">
+                </div>
+                <div class="col-2">
+                    <button type="button" id="etd-btn" class="btn btn-primary ">Convert</button>
+                </div>
+            </div>
+            <div class="mt-4 hide hide-epoch-table">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th style="width: 25%">GMT</th>
+                        <td id="etd-gmt"></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 25%">Your time zone</th>
+                        <td id="etd-local"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+    <hr class="my-4">
+    <div class="col-12 col-lg-8">
+        <h5 class="mb-3">Convert date to epoch</h5>
+            <div class="row search-box">
+                <div class="col-8 row align-self-center">
+                    <div class="col-3">
+                        <strong>Start/end of</strong>
+                    </div>
+                    <div class="col-3">
+                        <input id="radio-date-y" name="radio" type="radio" class="radio-date" required="">
+                        <label for="radio-date-y">Year</label>
+                    </div>
+                    <div class="col-3">
+                        <input id="radio-date-m" name="radio" type="radio" class="radio-date" required="">
+                        <label for="radio-date-m">Month</label>
+                    </div>
+                    <div class="col-3">
+                        <input id="radio-date-d" name="radio" type="radio" class="radio-date" required="">
+                        <label for="radio-date-d">Day</label>
+                    </div>
+                </div>
+                <div class="col row ">
+                    <div class="col align-self-center">
+                        <strong>Zone</strong>
+                    </div>
+                    <div class="col-8 align-self-center">
+                        <select class="form-select" id="date-zone" required="">
+                            <option value="local" selected="selected">Local</option>
+                            <option value="gmt">GMT</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!--// disabled=”disabled”-->
+                <div class="col">
+                    <input type="text" maxlength="4" class="form-control val-input input-date" id="input-date-y" placeholder="Y" required="">
+                </div>
+                <div class="col">
+                    <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-m" placeholder="M" required="">
+                </div>
+                <div class="col">
+                    <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-d" placeholder="D" required="">
+                </div>
+                <div class="col">
+                    <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-h" placeholder="H" required="">
+                </div>
+                <div class="col">
+                    <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-mm" placeholder="MIN" required="">
+                </div>
+                <div class="col">
+                    <button type="button" id="dte-btn" class="btn btn-primary">Convert</button>
+                </div>
+            </div>
+
+            <div class="mt-4 hide hide-date-table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Epoch</th>
+                        <th scope="col">Date and time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th style="width: 20%" id="table-date-c">Convert time</th>
+                        <td style="width: 20%" id="table-epoch-c"></td>
+                        <td id="table-datetime-c"></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 20%" id="table-date-s">Start of day</th>
+                        <td style="width: 20%" id="table-epoch-s"></td>
+                        <td id="table-datetime-s"></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 20%" id="table-date-e">End of day</th>
+                        <td style="width: 20%" id="table-epoch-e"></td>
+                        <td id="table-datetime-e"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+    <input type="hidden" id="input-store" va>
+
+    <footer class="text-center mt-2">
+        © 2022 Created by Dong Hwi
+    </footer>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/dist/js/moment.min.js"></script>
+    <script src="../assets/dist/js/moment-with-locales.min.js"></script>
+    <script src="../assets/dist/js/moment.ko.min.js"></script>
+    <script src="../assets/dist/js/popup.js"></script>
+</body>
+</html>
