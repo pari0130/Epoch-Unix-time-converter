@@ -83,6 +83,13 @@ function updateAttr(e){
         document.getElementById("table-date-s").innerText = "Start of month"
         document.getElementById("table-date-e").innerText = "End of month"
     }
+    if(text === "Week"){
+        SHOW_TARGET = "isoWeek"
+        disableAttr("input-date-h")
+        disableAttr("input-date-mm")
+        document.getElementById("table-date-s").innerText = "Start of Week"
+        document.getElementById("table-date-e").innerText = "End of Week"
+    }
     if(text === "Day") {
         SHOW_TARGET = "day"
         document.getElementById("table-date-s").innerText = "Start of day"
