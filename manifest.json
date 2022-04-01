@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Epoch & Unix time converter",
     "description": "Epoch & Unix time converter",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "icons": {
         "128": "logo/logo.png"
     },

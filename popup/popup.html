@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/dist/css/popup.css" rel="stylesheet">
-    <title>Chrome Addon v3: popup</title>
+    <title>Epoch converter</title>
 </head>
 
 <body class="p-3">
 
     <div class="col-md-12 col-lg-8">
         <h5 class="mb-3">Convert epoch to date</h5>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="col-10">
                     <input type="text" maxlength="13" class="form-control val-input" id="date-e" placeholder="Epoch Time" required="">
                 </div>
@@ -19,15 +19,19 @@
                     <button type="button" id="etd-btn" class="btn btn-primary ">Convert</button>
                 </div>
             </div>
-            <div class="mt-4 hide hide-epoch-table">
+            <div class="mt-2 hide hide-epoch-table">
                 <table class="table table-bordered">
+                    <colgroup>
+                        <col width="26%" />
+                        <col width="/" />
+                    </colgroup>
                     <tbody>
                     <tr>
-                        <th style="width: 25%">GMT</th>
+                        <th>GMT</th>
                         <td id="etd-gmt"></td>
                     </tr>
                     <tr>
-                        <th style="width: 25%">Your time zone</th>
+                        <th>Your time zone</th>
                         <td id="etd-local"></td>
                     </tr>
                     </tbody>
@@ -35,23 +39,24 @@
             </div>
     </div>
 
-    <hr class="my-3">
+    <hr>
+    
     <div class="col-12 col-lg-8">
         <h5 class="mb-3">Convert date to epoch</h5>
             <div class="row search-box">
-                <div class="col-8 row align-self-center">
+                <div class="col-8 row d-flex align-self-center">
                     <div class="col-3">
                         <strong>Start/end of</strong>
                     </div>
-                    <div class="col-3">
+                    <div class="ml-2">
                         <input id="radio-date-y" name="radio" type="radio" class="radio-date" required="">
                         <label for="radio-date-y">Year</label>
                     </div>
-                    <div class="col-3">
+                    <div class="ml-2">
                         <input id="radio-date-m" name="radio" type="radio" class="radio-date" required="">
                         <label for="radio-date-m">Month</label>
                     </div>
-                    <div class="col-3">
+                    <div class="ml-2">
                         <input id="radio-date-d" name="radio" type="radio" class="radio-date" required="">
                         <label for="radio-date-d">Day</label>
                     </div>
@@ -69,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-2">
                 <!--// disabled=”disabled”-->
                 <div class="col">
                     <input type="text" maxlength="4" class="form-control val-input input-date" id="input-date-y" placeholder="Y" required="">
@@ -91,31 +96,36 @@
                 </div>
             </div>
 
-            <div class="mt-4 hide hide-date-table">
+            <div class="mt-2 hide hide-date-table">
                 <table class="table table-bordered">
+                    <colgroup>
+                        <col width="26%" />
+                        <col width="/" />
+                        <col width="/" />
+                    </colgroup>
                     <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Epoch</th>
-                        <th scope="col">Date and time</th>
-                    </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Epoch</th>
+                            <th scope="col">Date and time</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th style="width: 20%" id="table-date-c">Convert time</th>
-                        <td style="width: 20%" id="table-epoch-c"></td>
-                        <td id="table-datetime-c"></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 20%" id="table-date-s">Start of day</th>
-                        <td style="width: 20%" id="table-epoch-s"></td>
-                        <td id="table-datetime-s"></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 20%" id="table-date-e">End of day</th>
-                        <td style="width: 20%" id="table-epoch-e"></td>
-                        <td id="table-datetime-e"></td>
-                    </tr>
+                        <tr>
+                            <th id="table-date-c">Convert time</th>
+                            <td id="table-epoch-c"></td>
+                            <td id="table-datetime-c"></td>
+                        </tr>
+                        <tr>
+                            <th id="table-date-s">Start of day</th>
+                            <td id="table-epoch-s"></td>
+                            <td id="table-datetime-s"></td>
+                        </tr>
+                        <tr>
+                            <th id="table-date-e">End of day</th>
+                            <td id="table-epoch-e"></td>
+                            <td id="table-datetime-e"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

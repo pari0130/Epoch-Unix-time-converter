@@ -1,14 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean);
 body {
-    min-width: 700px;
+    font-family:'Noto Sans KR',sans-serif;
+    min-width: 440px;
     font-size: 13px;
+    letter-spacing: -0.3px;
 }
+h5{font-weight: bold;}
+label, .btn, select{cursor: pointer;}
+input[type=radio]{width: 15px;height: 15px;vertical-align: middle;margin-bottom: 2px;}
 .search-box {
     background: #f2f2f2;
     padding: 10px;
     margin: 0;
 }
-thead {
-    background: #f4f4f4;
+.search-box select{max-width: 70px;}
+.search-box .row{margin: 0;padding: 0;}
+.search-box .row>*{padding: 0}
+.search-box .row>.col-3{width: 26%;}
+.search-box .row>.ml-2{margin-left: 8px;width: auto;}
+.search-box .row strong{letter-spacing: -0.7px;}
+.table{
+    border-collapse: collapse;
+}
+.table>thead+tbody{
+    border-top: 0 !important;
+}
+.table th, .table td{
+    padding: 5px;
+    font-size: inherit;
+}
+.table>tbody>tr>th, .table>thead>tr>th{
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    color: #333;
+
 }
 footer {
     font-size: 12px;
@@ -17,3 +42,8 @@ footer {
 .no-padding {
     padding: 0 !important;
 }
+.row{margin: 0 -5px;}
+.row>*{padding: 0 5px;}
+.form-control, .form-select{height: 33px;padding: 2px 5px; font-size: inherit;}
+.btn{padding: 5px 7px;font-size: inherit;}
+hr{margin: 18px 0 13px;}
