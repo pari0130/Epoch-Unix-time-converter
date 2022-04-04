@@ -13,9 +13,10 @@
         <h5 class="mb-3">Convert epoch to date</h5>
             <div class="row mt-1">
                 <div class="col-10">
-                    <input type="text" maxlength="13" class="form-control val-input" id="date-e" placeholder="Epoch Time" required="">
+                    <label for="date-e">Epoch(unix) or milliseconds time</label>
+                    <input type="text" maxlength="13" class="form-control val-input input-epoch" id="date-e" placeholder="Epoch Time" required="">
                 </div>
-                <div class="col-2">
+                <div class="col-2 cpt-20">
                     <button type="button" id="etd-btn" class="btn btn-primary ">Convert</button>
                 </div>
             </div>
@@ -81,29 +82,43 @@
             <div class="row mt-2">
                 <!--// disabled=”disabled”-->
                 <div class="col">
+                    <label for="input-date-y">Year</label>
                     <input type="text" maxlength="4" class="form-control val-input input-date" id="input-date-y" placeholder="Y" required="">
                 </div>
                 <div class="col">
+                    <label for="input-date-m">Month</label>
                     <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-m" placeholder="M" required="">
                 </div>
                 <div class="col">
+                    <label for="input-date-d">Day</label>
                     <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-d" placeholder="D" required="">
                 </div>
                 <div class="col">
+                    <label for="input-date-h">Hour</label>
                     <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-h" placeholder="H" required="">
                 </div>
                 <div class="col">
+                    <label for="input-date-mm">Min</label>
                     <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-mm" placeholder="MIN" required="">
                 </div>
                 <div class="col">
-                    <button type="button" id="dte-btn" class="btn btn-primary">Convert</button>
+                    <label for="input-date-sec">Sec</label>
+                    <input type="text" maxlength="2" class="form-control val-input input-date" id="input-date-sec" placeholder="SEC" required="">
+                </div>
+                <div class="col">
+                    <label for="input-date-sec">Miles</label>
+                    <input type="text" maxlength="3" class="form-control val-input input-date" id="input-date-miles" placeholder="MILES" required="">
+                </div>
+                <div class="col cpt-20">
+                    <button type="button" id="dte-btn" class="btn btn-primary align-self-center">Convert</button>
                 </div>
             </div>
 
             <div class="mt-2 hide hide-date-table">
                 <table class="table table-bordered">
                     <colgroup>
-                        <col width="26%" />
+                        <col width="21%" />
+                        <col width="/" />
                         <col width="/" />
                         <col width="/" />
                     </colgroup>
@@ -111,6 +126,7 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Epoch</th>
+                            <th scope="col">Miles</th>
                             <th scope="col">Date and time</th>
                         </tr>
                     </thead>
@@ -118,16 +134,19 @@
                         <tr>
                             <th id="table-date-c">Convert time</th>
                             <td id="table-epoch-c"></td>
+                            <td id="table-miles-c"></td>
                             <td id="table-datetime-c"></td>
                         </tr>
                         <tr>
                             <th id="table-date-s">Start of day</th>
                             <td id="table-epoch-s"></td>
+                            <td id="table-miles-s"></td>
                             <td id="table-datetime-s"></td>
                         </tr>
                         <tr>
                             <th id="table-date-e">End of day</th>
                             <td id="table-epoch-e"></td>
+                            <td id="table-miles-e"></td>
                             <td id="table-datetime-e"></td>
                         </tr>
                     </tbody>
@@ -138,7 +157,7 @@
     <input type="hidden" id="input-store" va>
 
     <footer class="text-center mt-2">
-        © 2022 Created by Dong Hwi
+        © 2022 Created by Dong
     </footer>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

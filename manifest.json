@@ -2,12 +2,12 @@
     "manifest_version": 3,
     "name": "Epoch & Unix time converter",
     "description": "Epoch & Unix time converter",
-    "version": "0.0.2",
+    "version": "1.0.3",
     "icons": {
         "128": "logo/logo.png"
     },
     "action": {
-        "default_title": "Chrome Addon v3 Starter",
+        "default_title": "Epoch converter",
         "default_popup": "popup/popup.html"
     }
 }

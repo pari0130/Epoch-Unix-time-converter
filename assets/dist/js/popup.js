@@ -1,4 +1,5 @@
 let SHOW_TARGET = "day"
+const DATE_FORMAT = "YYYY-MM-DD(ddd) HH:mm:ss.SSS" // "YYYY-MM-DD(ddd) hh:mm:ss a"
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
@@ -25,6 +26,8 @@ function setDefaultValue() {
     document.getElementById("input-date-d").value = moment().date()
     document.getElementById("input-date-h").value = moment().hour()
     document.getElementById("input-date-mm").value = moment().minutes()
+    document.getElementById("input-date-sec").value = moment().second()
+    document.getElementById("input-date-miles").value = moment().millisecond()
     setDateToEpoch()
 }
 
@@ -34,7 +37,7 @@ function eventManage(){
     // input event only number event
     const input = document.querySelectorAll('.val-input');
     input.forEach(value => {
-        value.addEventListener("keyup", numValidator)
+        value.addEventListener("keyup", inputKeyEvent)
     })
 
     // epoch to date button event
@@ -72,6 +75,8 @@ function updateAttr(e){
         disableAttr("input-date-d")
         disableAttr("input-date-h")
         disableAttr("input-date-mm")
+        disableAttr("input-date-sec")
+        disableAttr("input-date-miles")
         document.getElementById("table-date-s").innerText = "Start of year"
         document.getElementById("table-date-e").innerText = "End of year"
     }
@@ -80,6 +85,8 @@ function updateAttr(e){
         disableAttr("input-date-d")
         disableAttr("input-date-h")
         disableAttr("input-date-mm")
+        disableAttr("input-date-sec")
+        disableAttr("input-date-miles")
         document.getElementById("table-date-s").innerText = "Start of month"
         document.getElementById("table-date-e").innerText = "End of month"
     }
@@ -87,8 +94,10 @@ function updateAttr(e){
         SHOW_TARGET = "isoWeek"
         disableAttr("input-date-h")
         disableAttr("input-date-mm")
-        document.getElementById("table-date-s").innerText = "Start of Week"
-        document.getElementById("table-date-e").innerText = "End of Week"
+        disableAttr("input-date-sec")
+        disableAttr("input-date-miles")
+        document.getElementById("table-date-s").innerText = "Start of week"
+        document.getElementById("table-date-e").innerText = "End of week"
     }
     if(text === "Day") {
         SHOW_TARGET = "day"
@@ -106,9 +115,17 @@ function disableAttr(id) {
 function setEpochToDate(){
     console.log("[setEpochToDate]")
     const unix = document.getElementById("date-e").value
-    const date = moment.unix(Number(unix))
-    document.getElementById("etd-local").innerText = date.local().format('LLLL')
-    document.getElementById("etd-gmt").innerText = date.utc().format('LLLL')
+    let date = 0
+    if(unix.length === 13) {
+        date = moment(Number(unix))
+        document.getElementById("etd-local").innerText = date.local().format(DATE_FORMAT)
+        document.getElementById("etd-gmt").innerText = date.utc().format(DATE_FORMAT)
+    }
+    if(unix.length === 10) {
+        date = moment.unix(Number(unix))
+        document.getElementById("etd-local").innerText = date.local().format(DATE_FORMAT)
+        document.getElementById("etd-gmt").innerText = date.utc().format(DATE_FORMAT)
+    }
 }
 
 function setDateToEpoch(){
@@ -119,15 +136,20 @@ function setDateToEpoch(){
     const day = document.getElementById("input-date-d").value
     const hh = document.getElementById("input-date-h").value
     const mm = document.getElementById("input-date-mm").value
-    let date = moment().set({"year" : year, "month" : month-1, "date" : day, "hour" : hh, "minute" : mm, "second" : 0})
+    const sec = document.getElementById("input-date-sec").value
+    const miles = document.getElementById("input-date-miles").value
+    let date = moment().set({"year" : year, "month" : month-1, "date" : day, "hour" : hh, "minute" : mm, "second" : sec, "millisecond" : miles})
 
     let startEnd = getStartEnd(SHOW_TARGET, date)[zone]
     let epoch_start = startEnd.start_unix
+    let miles_start = startEnd.start_miles
     let epoch_end = startEnd.end_unix
+    let miles_end = startEnd.end_miles
     let date_start = startEnd.start
     let date_end = startEnd.end
     let epoch_current = startEnd.current_epoch
     let date_current = startEnd.current_date_time
+    let miles_current = startEnd.current_miles
 
     console.log(date)
     console.log(date.unix())
@@ -142,10 +164,13 @@ function setDateToEpoch(){
 
     document.getElementById("table-epoch-s").innerText = epoch_start
     document.getElementById("table-datetime-s").innerText = date_start
+    document.getElementById("table-miles-s").innerText = miles_start
     document.getElementById("table-epoch-e").innerText = epoch_end
     document.getElementById("table-datetime-e").innerText = date_end
+    document.getElementById("table-miles-e").innerText = miles_end
     document.getElementById("table-epoch-c").innerText = epoch_current
     document.getElementById("table-datetime-c").innerText = date_current
+    document.getElementById("table-miles-c").innerText = miles_current
 }
 
 function getStartEnd(t, date){
@@ -155,26 +180,50 @@ function getStartEnd(t, date){
     const _utc = moment(date.valueOf()).utc()
     return {
         "local" : {
-            "start" : _local.startOf(t).format('LLLL'),
-            "end" : _local.endOf(t).format('LLLL'),
+            "start" : _local.startOf(t).format(DATE_FORMAT),
+            "end" : _local.endOf(t).format(DATE_FORMAT),
             "start_unix" : _local.startOf(t).unix(),
+            "start_miles" : _local.startOf(t).valueOf(),
             "end_unix" : _local.endOf(t).unix(),
+            "end_miles" : _local.endOf(t).valueOf(),
             "current_epoch" : date.local().unix(),
-            "current_date_time" : date.local().format('LLLL')
+            "current_miles" : date.local().valueOf(),
+            "current_date_time" : date.local().format(DATE_FORMAT)
         },
         "gmt" : {
-            "start" : _utc.startOf(t).format('LLLL'),
-            "end" : _utc.endOf(t).format('LLLL'),
+            "start" : _utc.startOf(t).format(DATE_FORMAT),
+            "end" : _utc.endOf(t).format(DATE_FORMAT),
             "start_unix" : _utc.startOf(t).unix(),
+            "start_miles" : _utc.startOf(t).valueOf(),
             "end_unix" : _utc.endOf(t).unix(),
+            "end_miles" : _utc.endOf(t).valueOf(),
             "current_epoch" : date.utc().unix(),
-            "current_date_time" : date.utc().format('LLLL')
+            "current_miles" : date.local().valueOf(),
+            "current_date_time" : date.utc().format(DATE_FORMAT)
         }
     }
+}
+
+function inputKeyEvent(e) {
+    numValidator(e)
+    enterConert(e)
+    setEpochToDate()
 }
 
 function numValidator(e){
     console.log("[numValidator]")
 
     e.target.value = e.target.value.replace(/[^0-9]+/g, "");
+}
+
+function enterConert(e) {
+    console.log("[enterConert]")
+    if (e.key === "Enter"){
+        if(e.target.classList.contains("input-epoch")){
+            setEpochToDate()
+        }
+        if(e.target.classList.contains("input-date")){
+            setDateToEpoch()
+        }
+    }
 }
