@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Epoch & Unix time converter",
-    "description": "Epoch & Unix time converter",
-    "version": "1.0.3",
+    "name": "Epoch time converter",
+    "description": "Epoch time converter",
+    "version": "1.0.4",
     "icons": {
         "128": "logo/logo.png"
     },
