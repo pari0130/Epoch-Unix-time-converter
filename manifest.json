@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Epoch time converter",
-    "description": "Epoch time converter",
-    "version": "1.0.4",
+    "description": "Converts epoch(unix) and milliseconds to date time",
+    "version": "1.0.5",
     "icons": {
         "128": "logo/logo.png"
     },
