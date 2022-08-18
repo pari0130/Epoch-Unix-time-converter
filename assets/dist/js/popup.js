@@ -121,7 +121,7 @@ function setEpochToDate(){
         document.getElementById("etd-local").innerText = date.local().format(DATE_FORMAT)
         document.getElementById("etd-gmt").innerText = date.utc().format(DATE_FORMAT)
     }
-    if(unix.length === 10) {
+    if(unix.length <= 10) {
         date = moment.unix(Number(unix))
         document.getElementById("etd-local").innerText = date.local().format(DATE_FORMAT)
         document.getElementById("etd-gmt").innerText = date.utc().format(DATE_FORMAT)
